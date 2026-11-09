@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {createRequire} from 'node:module';const req=createRequire(import.meta.url);
+const data=req('../src/questions.js'),extra=req('../src/showdata.js'),L=req('../src/showlogic.js');
+test('original question decks cover 6 subjects and 108 questions',()=>{assert.equal(data.CATEGORIES.length,6);assert.equal(data.QUESTIONS.flat().length,108);for(const q of data.QUESTIONS.flat())assert.equal(q.answers.length,4)});
+test('close call questions have 4 ordered options',()=>{assert.ok(extra.CLOSE.length>=10);for(const x of extra.CLOSE){assert.equal(x.answers.length,4);assert.ok(x.category>=0&&x.category<6);assert.equal(new Set(x.answers).size,4)}});
+test('grab bag exactly 8 true and 8 false and all unique',()=>{for(const x of extra.GRAB){assert.equal(x.yes.length,8);assert.equal(x.no.length,8);assert.equal(new Set([...x.yes,...x.no]).size,16)}});
+test('3 and 5 round schedules end with rapid final',()=>{assert.deepEqual(L.plan(3),['quick','grab','rapid']);assert.deepEqual(L.plan(5),['quick','switch','close','grab','rapid'])});
+test('create accepts 1 to 4 players and rejects invalid lengths',()=>{assert.equal(L.create(['A'],3).players.length,1);assert.equal(L.create(['A','B','C','D']).players.length,4);assert.throws(()=>L.create([],5));assert.throws(()=>L.create(['A'],4))});
+test('rank points descending across all four ranks',()=>{const p=L.create(['A']).players[0];[0,1,2,3].forEach(r=>L.scoreRank(p,r));assert.equal(p.score,3000);assert.equal(p.roundCorrect,4)});
+test('collecting six distinct wedges chooses winner',()=>{const g=L.create(['A','B']);g.players[0].wedges.fill(true);g.players[0].score=1500;assert.equal(L.chooseWinner(g),0);g.players[1].wedges.fill(true);g.players[1].score=2000;assert.equal(L.chooseWinner(g),1)});
+test('no duplicate wedges awarded for consecutive rounds',()=>{const g=L.create(['A']);g.players[0].roundScore=200;L.awardRound(g,1);g.players[0].roundScore=100;L.awardRound(g,1);assert.equal(L.countWedges(g.players[0]),2)});

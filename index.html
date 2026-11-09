@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0a0d25">
+<title>КВИЗ LIVE 2 — тестовая ветка</title>
+<link rel="icon" href="assets/icon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="styles-live2.css">
+<script src="src/questions.js" defer></script><script src="src/family.js" defer></script><script src="src/showdata.js" defer></script><script src="src/showlogic.js" defer></script><script src="src/app.js" defer></script>
+</head>
+<body>
+<div class="sky" aria-hidden="true"><div class="beam beam1"></div><div class="beam beam2"></div><div class="beam beam3"></div><div class="globe"></div></div>
+<div class="app">
+<header class="header"><a class="brand" href="#" id="home-link"><span class="emblem">✦</span><span>КВИЗ <b>LIVE 2</b><small>ТЕСТОВАЯ ВЕТКА · PC EDITION</small></span></a><div class="header-right"><span id="pad-status" class="pad-pill">🎮 Проверка контроллеров…</span><button id="sound" class="small-button" aria-label="Звук">♫</button><button id="fullscreen" class="small-button" aria-label="На весь экран">⛶</button></div></header>
+<main id="menu" class="menu">
+<div class="menu-intro"><div class="eyebrow">✧ НОВАЯ АРЕНА · БОЛЬШЕ РЕЖИМОВ</div><h1>Шоу знаний<br><em>возвращается.</em></h1><p>Яркая игровая арена, персонажи, семейные вопросы, командное состязание и поддержка нескольких геймпадов.</p><div class="facts"><span>◈ 6 категорий</span><span>◈ 1–4 игрока</span><span>◈ Геймпады / клавиатура</span></div><div class="stage-demo live2-demo" aria-hidden="true"><img src="assets/live2-concept.webp" alt="" loading="lazy"><span>КОНЦЕПТ-АРТ НОВОЙ АРЕНЫ</span></div></div>
+<section class="setup" aria-label="Настройка игры"><span class="micro">НОВОЕ ШОУ <strong>01 / НАСТРОЙКИ</strong></span><h2>Занять своё место</h2><label class="fieldlabel">ФОРМАТ ИГРЫ</label><div class="mode-picks" id="format-select"><button data-format="classic"><b>Классика</b><small>Каждый играет за себя</small></button><button data-format="versus"><b>Команды 2 × 2</b><small>4 игрока · общий результат</small></button></div><label class="fieldlabel">ИГРОКОВ</label><div class="segments" id="count-select"><button data-count="1">1</button><button data-count="2">2</button><button data-count="3">3</button><button data-count="4">4</button></div><label class="fieldlabel">ПРОДОЛЖИТЕЛЬНОСТЬ</label><div class="mode-picks" id="length-select"><button data-length="3"><b>Быстрое шоу</b><small>3 раунда · ~15 минут</small></button><button data-length="5"><b>Полное шоу</b><small>5 раундов · ~30 минут</small></button></div><label class="fieldlabel">НАБОР ВОПРОСОВ</label><div class="mode-picks" id="question-select"><button data-rules="standard"><b>Обычный</b><small>108 вопросов</small></button><button data-rules="family"><b>Семейный</b><small>48 простых вопросов</small></button></div><label class="fieldlabel">ВРЕМЯ НА ОТВЕТ</label><div class="segments" id="time-select"><button data-time="0">∞</button><button data-time="15">15 с</button><button data-time="25">25 с</button><button data-time="40">40 с</button></div><label class="fieldlabel">ИМЕНА И ПЕРСОНАЖИ <small>· нажмите на портрет, чтобы сменить</small></label><div class="names" id="names"></div><button class="primary" id="start">НАЧАТЬ ШОУ <span>↗</span></button><p class="hint">Игроки отвечают по очереди, но правильные ответы раскрываются всем одновременно. Каждый геймпад назначается своему игроку.</p></section>
+</main>
+<main id="play" class="play" hidden><div class="showbar"><div class="livechip">● LIVE 2 · ТЕСТ</div><div class="round-name" id="round-name"></div><div id="round-progress" class="counter"></div></div>
+<div class="stage"><div class="stage-lights" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><div class="scene"><div class="scene-upper"><div id="category-banner" class="cat-banner">◈ ШЕСТЬ ТЕМ</div><div id="headline" class="headline">Готовы к игре?</div><div id="subtitle" class="subtitle"></div></div><section id="question-area" class="question-area" aria-live="polite"></section></div><div id="player-podiums" class="player-podiums"></div><div class="stage-edge"></div></div>
+<div class="bottom-bar"><span id="input-guide">✕ / A — подтвердить · Крестовина — выбор · Start — пауза</span><span id="round-hint"></span></div></main>
+<footer>НЕЗАВИСИМЫЙ ПРОТОТИП · АВТОРСКИЕ РЕСУРСЫ · НЕ ПРОДУКТ UBISOFT</footer>
+</div>
+<div id="pause" class="overlay" hidden><div class="dialog"><div class="dialog-icon">Ⅱ</div><h2>Эфир на паузе</h2><p>Таймер остановлен.</p><button class="primary" id="resume">ПРОДОЛЖИТЬ</button><button class="quiet" id="exit">В ГЛАВНОЕ МЕНЮ</button></div></div>
+</body></html>

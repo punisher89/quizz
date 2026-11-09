@@ -1,0 +1,7 @@
+# Locally supplied original assets and derived private exports
+/Media.zip
+/private_assets/
+/local_exports/
+/*.private.json
+**/__pycache__/
+.pytest_cache/
